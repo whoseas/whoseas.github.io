@@ -1,2 +1,2 @@
-# whoseas.githum.io
+# whoseas.github.io
 hello world !
