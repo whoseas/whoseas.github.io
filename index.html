@@ -31,9 +31,15 @@
           <div>
 			<h2>SharePoint list migration</h2>
 			<p>
-				1.using the power shell with the appropriate user.
-				2.execute below command
-				Export-SPWeb -Identity [Site/Subsite] -ItemUrl Lists/[listname] -Path 'D:\[name].cmp' -NoFileCompression –Verbose
+				1.Using the power shell with the appropriate user.<br />
+				2.Execute below command to get the cmp folder<br />
+				Export-SPWeb -Identity [Site/Subsite] -ItemUrl Lists/[listname] -Path 'D:\[name].cmp' -NoFileCompression –Verbose<br />
+				3.In the cmp folder open the SystemData.XML file with an editor like NotePad++ and change the version from 14.0.0.0 to 15.0.0.0 , and the build version from your 14.0.x.x to 15.0.x.x (depending on the build you have on both your farms). Here is a screenshot with before and after.<br />
+				4.Now we have to repackage it as a .cab file. I used a software called CabPack. Select your Source and Destination. Change the CabinetNameTemplate if you want, and click on OK.<br />
+				5.Change the extension from .cab to .cmp<br />
+				6.Copy the .cmp file back on the network share or directly on the SharePoint 2013 Server.<br />
+				7.Open SharePoint 2013 Management Shell as an administrator. Run this command by changing the parameters of course! Import-SPWeb -Identity http://teamsite.vlad.local/ -Path \\sp2010-itest\Exports\MyCusttomList.cmp -Verbose<br />
+				8.finish, sometime when you when you click the title link to the detail page, it will display an error about the list not found, so you need go to the DisplayForm.aspx page to change the list ID number to the current ID is ok.
 			</p>
 		  </div>
         </section>
