@@ -31,20 +31,26 @@
           <div>
 			<h2>ASP.net MasterPage</h2>
 			<p>
-				母版页和内容页都可以包含控件的事件处理程序。对于控件而言，事件是在本地处理的，即内容页中的控件在内容页中引发事件，母版页中的控件在母版页中引发事件。控件事件不会从内容页发送到母版页。同样，也不能在内容页中处理来自母版页控件的事件。
-        在某些情况下，内容页和母版页中会引发相同的事件。例如，两者都引发 Init 和 Load 事件。引发事件的一般规则是初始化事件从最里面的控件向最外面的控件引发，所有其他事件则从最外面的控件向最里面的控件引发。请记住，母版页会合并到内容页中并被视为内容页中的一个控件，这一点十分有用。
-        下面是母版页与内容页合并后事件的发生顺序：<br />
-        1. 母版页控件 Init 事件。<br />
-        2. 内容控件 Init 事件。<br />
-        3. 母版页 Init 事件。<br />
-        4. 内容页 Init 事件。<br />
-        5. 内容页 Load 事件。<br />
-        6. 母版页 Load 事件。<br />
-        7. 内容控件 Load 事件。<br />
-        8. 内容页 PreRender 事件。<br />
-        9. 母版页 PreRender 事件。<br />
-        10. 母版页控件 PreRender 事件。<br />
-        11. 内容控件 PreRender 事件。<br />
+			Both master pages and content pages can contain event handlers for controls. For controls, events are handled locally—a control in a content page raises an event in the content page, and a control in the master page raises an event in the master page. Controls events are not sent from the content page to the master page. Similarly, you cannot handle an event from a master page control in a content page.
+			In some cases, the same event is raised in both the content and the master page. For example, both pages raise Init and Load events. The general rule for how events are raised is that the initialization events are raised from the innermost control to the outermost one, and all other events are raised from the outermost control to the innermost one. It is helpful to remember that the master page is merged into the content page and treated as a control in the content page.
+			The following is the sequence in which events occur when a master page is merged with a content page:<br />
+			1. Content page PreInit event.<br />
+			2. Master page controls Init event.<br />
+			3. Content controls Init event.<br />
+			4. Master page Init event.<br />
+			5. Content page Init event.<br />
+			6. Content page Load event.<br />
+			7. Master page Load event.<br />
+			8. Master page controls Load event.<br />
+			9. Content page controls Load event.<br />
+			10. Content page PreRender event.<br />
+			11. Master page PreRender event.<br />
+			12. Master page controls PreRender event.<br />
+			13. Content page controls PreRender event.<br />
+			14. Master page controls Unload event.<br />
+			15. Content page controls Unload event.<br />
+			16. Master page Unload event.<br />
+			17. Content page Unload event.<br />
 			</p>
 		  </div>
         </section>
